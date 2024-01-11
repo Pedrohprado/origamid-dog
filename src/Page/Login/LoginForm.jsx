@@ -37,7 +37,12 @@ const LoginForm = () => {
         className='flex flex-col justify-center items-start'
       >
         <Input label='Usuário' type='text' name='username' />
-        <Input label='Senha' type='password' name='password' />
+        <Input
+          label='Senha'
+          type='password'
+          name='password'
+          error=' deu erro'
+        />
 
         <Button>enviar</Button>
       </form>
