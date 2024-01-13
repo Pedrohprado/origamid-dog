@@ -1,33 +1,42 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../Components/Form/Input';
 import Button from '../../Components/Form/Button';
+import useForm from '../../Hooks/useForm';
+import { TOKEN_POST, USER_GET } from '../../api';
+import React from 'react';
 
 const LoginForm = () => {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const username = useForm();
+  const password = useForm();
 
-  const handleSubmit = (event) => {
+  React.useEffect(() => {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      getUser(token);
+    }
+  }, []);
+
+  const getUser = async (token) => {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log(json);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-        return json;
+    if (username.validate() && password.validate()) {
+      const { url, options } = TOKEN_POST({
+        username: username.value,
+        password: password.value,
       });
+      const response = await fetch(url, options);
+      const json = await response.json();
+      console.log(json);
+      window.localStorage.setItem('token', json.token);
+      getUser(json.token);
+    }
   };
   return (
     <section className='flex flex-col itemns-center justify-center'>
@@ -36,13 +45,8 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
         className='flex flex-col justify-center items-start'
       >
-        <Input label='Usuário' type='text' name='username' />
-        <Input
-          label='Senha'
-          type='password'
-          name='password'
-          error=' deu erro'
-        />
+        <Input label='Usuário' type='text' name='username' {...username} />
+        <Input label='Senha' type='password' name='password' {...password} />
 
         <Button>enviar</Button>
       </form>
