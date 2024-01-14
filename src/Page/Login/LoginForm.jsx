@@ -1,43 +1,24 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../Components/Form/Input';
 import Button from '../../Components/Form/Button';
 import useForm from '../../Hooks/useForm';
-import { TOKEN_POST, USER_GET } from '../../api';
-import React from 'react';
+import { UserContext } from '../../Context/userContext';
 
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
 
-  React.useEffect(() => {
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      getUser(token);
-    }
-  }, []);
-
-  const getUser = async (token) => {
-    const { url, options } = USER_GET(token);
-    const response = await fetch(url, options);
-    const json = await response.json();
-    console.log(json);
-  };
+  const { userLogin } = React.useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (username.validate() && password.validate()) {
-      const { url, options } = TOKEN_POST({
-        username: username.value,
-        password: password.value,
-      });
-      const response = await fetch(url, options);
-      const json = await response.json();
-      console.log(json);
-      window.localStorage.setItem('token', json.token);
-      getUser(json.token);
+      userLogin(username.value, password.value);
     }
   };
+
   return (
     <section className='flex flex-col itemns-center justify-center'>
       <h1 className=' font-bold mb-2'>Login</h1>

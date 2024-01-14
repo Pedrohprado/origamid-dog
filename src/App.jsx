@@ -5,17 +5,20 @@ import Header from './Components/Header';
 import HomePage from './Page/HomePage';
 import Login from './Page/Login/Login';
 import Footer from './Components/Footer';
+import { UserStorage } from './Context/userContext';
 
 const App = () => {
   return (
     <div className=' w-full flex flex-col items-center justify-center'>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='login/*' element={<Login />} />
-        </Routes>
-        <Footer />
+        <UserStorage>
+          <Header />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='login/*' element={<Login />} />
+          </Routes>
+          <Footer />
+        </UserStorage>
       </BrowserRouter>
     </div>
   );
