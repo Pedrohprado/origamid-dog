@@ -13,14 +13,14 @@ const Header = () => {
           <Dog />
         </Link>
         {data !== null ? (
-          <Link
-            to='conta'
+          <button
+            onClick={userLogout}
             className=' px-5 py-2 text-stone-800 font-medium transition-1 flex items-center justify-center gap-2'
           >
             {data.nome}
-            <button onClick={userLogout}>sair</button>
+            sair
             <Login className=' text-stone-800' />
-          </Link>
+          </button>
         ) : (
           <Link
             to='login'
