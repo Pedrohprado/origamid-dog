@@ -4,6 +4,7 @@ import Input from '../../Components/Form/Input';
 import Button from '../../Components/Form/Button';
 import useForm from '../../Hooks/useForm';
 import { UserContext } from '../../Context/userContext';
+import Error from '../../Components/Helper/Error';
 
 const LoginForm = () => {
   const username = useForm();
@@ -20,8 +21,8 @@ const LoginForm = () => {
   };
 
   return (
-    <section className='flex flex-col itemns-center justify-center'>
-      <h1 className=' font-bold mb-2'>Login</h1>
+    <section className='flex flex-col itemns-center justify-center opacity-0 translate-x-20 animate-animationleft'>
+      <h1 className=' text-3xl font-bold mb-10 leading-4 relative'>Login</h1>
       <form
         onSubmit={handleSubmit}
         className='flex flex-col justify-center items-start'
@@ -34,7 +35,7 @@ const LoginForm = () => {
           <Button>enviar</Button>
         )}
       </form>
-      {error && <p>{error}</p>}
+      {error && <Error error={error} />}
       <Link
         to={'/login/lost'}
         className=' w-[120px] mt-5 pb-1 border-b-2 font-medium'
