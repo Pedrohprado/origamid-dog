@@ -1,0 +1,9 @@
+.active {
+  background-color: white;
+  box-shadow: 0 0 0 3px #fea;
+  border-color: #fb1;
+}
+
+.active svg > * {
+  fill: #fb1;
+}

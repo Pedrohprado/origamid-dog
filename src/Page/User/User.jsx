@@ -1,7 +1,19 @@
+import { Route, Routes } from 'react-router-dom';
+
+import UserHeader from './UserHeader';
+import Feed from '../../Components/Feed/Feed';
+import UserPhotoPost from './UserPhotoPost';
+import UserStats from './UserStats';
+
 const User = () => {
   return (
-    <div className=' w-5/6 flex flex-col items-center justify-center pt-16'>
-      minha conta
+    <div className=' w-5/6 flex flex-col items-center justify-center pt-20'>
+      <UserHeader />
+      <Routes>
+        <Route path='/' element={<Feed />} />
+        <Route path='postar' element={<UserPhotoPost />} />
+        <Route path='estatisticas' element={<UserStats />} />
+      </Routes>
     </div>
   );
 };
