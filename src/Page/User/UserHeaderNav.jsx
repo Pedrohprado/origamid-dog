@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/userContext';
 
 import MyPhotos from '../../Assets/feed.svg/?react';
@@ -12,6 +12,12 @@ import './UserActiveLInk.css';
 const UserHeaderNav = () => {
   const [mobile, setMobile] = React.useState(null);
   const { userLogout } = React.useContext(UserContext);
+  const navigate = useNavigate;
+
+  function userExit() {
+    userLogout();
+    navigate('/login');
+  }
   return (
     <nav className='flex items-center justify-center gap-5 '>
       <NavLink
@@ -37,7 +43,7 @@ const UserHeaderNav = () => {
         <AddPhoto />
       </NavLink>
       <button
-        onClick={userLogout}
+        onClick={userExit}
         className=' flex items-center justify-center gap-1 bg-slate-200 rounded p-1 hover:bg-white '
       >
         {mobile && 'sair'}

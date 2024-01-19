@@ -19,8 +19,7 @@ export const UserStorage = ({ children }) => {
     setLoading(false);
     setLogin(false);
     window.localStorage.removeItem('token');
-    navigate('/login');
-  }, [navigate]);
+  }, []);
 
   //NOTAS:Adiquirindo o token, conseguimos ganhar acesso ao user, com as informações
   const getUser = async (token) => {
