@@ -38,7 +38,7 @@ const LoginForm = () => {
       {error && <Error error={error} />}
       <Link
         to={'/login/lost'}
-        className=' w-[120px] mt-5 pb-1 border-b-2 font-medium'
+        className=' w-[120px] mt-5 pb-1 border-b-2 font-medium '
       >
         Perdeu a senha?
       </Link>
