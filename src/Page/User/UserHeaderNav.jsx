@@ -14,6 +14,13 @@ const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext);
   const navigate = useNavigate;
 
+  const { matches } = window.matchMedia('(max-width: 40rem)');
+  console.log(matches);
+
+  React.useEffect(() => {
+    setMobile(!matches);
+  }, [matches]);
+
   function userExit() {
     userLogout();
     navigate('/login');
