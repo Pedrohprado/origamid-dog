@@ -55,7 +55,7 @@ const UserHeaderNav = () => {
       <nav
         className={
           mobile
-            ? `flex flex-col absolute top-32 right-9  bg-white rounded w-56 opacity-0 translate-x-20 ${
+            ? ` z-40 flex flex-col absolute top-32 right-9  bg-white rounded w-56 opacity-0 translate-x-20 ${
                 mobileMenu ? 'animate-animationleft' : ''
               }`
             : 'flex items-center justify-center gap-5'
