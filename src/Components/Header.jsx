@@ -8,7 +8,7 @@ const Header = () => {
   const { data } = React.useContext(UserContext);
   return (
     <header className=' h-16 w-svw flex items-center justify-center shadow-md fixed z-10 bg-white top-0'>
-      <nav className='  w-full flex items-center justify-between '>
+      <nav className='  w-full px-2 flex items-center justify-between '>
         <Link to='/' className='px-5 py-2' aria-label='Dogs | Home'>
           <Dog />
         </Link>
