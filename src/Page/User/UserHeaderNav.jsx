@@ -8,55 +8,101 @@ import AddPhoto from '../../Assets/adicionar.svg/?react';
 import Exit from '../../Assets/sair.svg/?react';
 
 import './UserActiveLInk.css';
+import useMedia from '../../Hooks/useMedia';
+
+import { HiOutlineMenu } from 'react-icons/hi';
+import { IoCloseSharp } from 'react-icons/io5';
 
 const UserHeaderNav = () => {
-  const [mobile, setMobile] = React.useState(null);
+  const [mobileMenu, setMobileMenu] = React.useState(false);
+
   const { userLogout } = React.useContext(UserContext);
   const navigate = useNavigate;
-
-  const { matches } = window.matchMedia('(max-width: 40rem)');
-  console.log(matches);
-
-  React.useEffect(() => {
-    setMobile(!matches);
-  }, [matches]);
+  const mobile = useMedia('(max-width: 40rem)');
 
   function userExit() {
     userLogout();
     navigate('/login');
   }
+
   return (
-    <nav className='flex items-center justify-center gap-5 '>
-      <NavLink
-        to='/conta'
-        className='flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
-        end
+    <>
+      {mobile && (
+        <button
+          className={`z-2 h-10 w-10 flex items-center justify-center bg-slate-200 rounded p-1 transform transition-transform duration-300 ${
+            mobileMenu ? 'rotate-180' : ''
+          }`}
+          onClick={() => setMobileMenu(!mobileMenu)}
+        >
+          {mobileMenu ? (
+            <IoCloseSharp size={20} fill='#303030' />
+          ) : (
+            <HiOutlineMenu size={20} fill='#303030' />
+          )}
+        </button>
+      )}
+      <nav
+        className={
+          mobile
+            ? `flex flex-col absolute top-32 right-9  bg-white rounded w-56 opacity-0 translate-x-20 ${
+                mobileMenu ? 'animate-animationleft' : ''
+              }`
+            : 'flex items-center justify-center gap-5'
+        }
       >
-        {mobile && 'Minhas fotos'}
-        <MyPhotos />
-      </NavLink>
-      <NavLink
-        to='/conta/estatisticas'
-        className='flex items-center justify-center gap-1 bg-slate-200 rounded p-1 hover:bg-white '
-      >
-        {mobile && 'Estatísticas'}
-        <Statistics />
-      </NavLink>
-      <NavLink
-        to='/conta/postar'
-        className='flex items-center justify-center gap-1 bg-slate-200 rounded p-1 hover:bg-white '
-      >
-        {mobile && 'Adicionar fotos'}
-        <AddPhoto />
-      </NavLink>
-      <button
-        onClick={userExit}
-        className=' flex items-center justify-center gap-1 bg-slate-200 rounded p-1 hover:bg-white '
-      >
-        {mobile && 'sair'}
-        <Exit />
-      </button>
-    </nav>
+        {mobileMenu ? (
+          <>
+            <NavLink
+              to='/conta'
+              className={
+                mobile
+                  ? 'flex items-center justify-start bg-slate-200 w-full px-2 py-1 gap-2'
+                  : 'flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
+              }
+              end
+            >
+              <MyPhotos />
+              {mobile && 'Minhas fotos'}
+            </NavLink>
+            <NavLink
+              to='/conta/estatisticas'
+              className={
+                mobile
+                  ? 'flex items-center justify-start bg-slate-200 w-full px-2 py-1 gap-2'
+                  : 'flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
+              }
+            >
+              <Statistics />
+              {mobile && 'Estatísticas'}
+            </NavLink>
+            <NavLink
+              to='/conta/postar'
+              className={
+                mobile
+                  ? 'flex items-center justify-start bg-slate-200 w-full px-2 py-1 gap-2'
+                  : 'flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
+              }
+            >
+              <AddPhoto />
+              {mobile && 'Adicionar fotos'}
+            </NavLink>
+            <button
+              onClick={userExit}
+              className={
+                mobile
+                  ? 'flex items-center justify-start bg-slate-200 w-full px-2 py-1 gap-2 '
+                  : 'flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
+              }
+            >
+              <Exit />
+              {mobile && 'sair'}
+            </button>
+          </>
+        ) : (
+          ''
+        )}
+      </nav>
+    </>
   );
 };
 
