@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import FeedPhotosItem from './FeedPhotosItem';
 import useFetch from '../../Hooks/useFetch';
@@ -5,7 +6,7 @@ import Error from '../Helper/Error';
 import Loading from '../Helper/Loading';
 import { PHOTOS_GET } from '../../api';
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setModalPhoto }) => {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -23,7 +24,11 @@ const FeedPhotos = () => {
     return (
       <ul className=' opacity-0 translate-x-20 animate-animationleft grid grid-cols-3 gap-4 mb-4 items-center max-sm:grid-cols-2'>
         {data.map((photo) => (
-          <FeedPhotosItem key={photo.id} photo={photo} />
+          <FeedPhotosItem
+            key={photo.id}
+            photo={photo}
+            setModalPhoto={setModalPhoto}
+          />
         ))}
       </ul>
     );

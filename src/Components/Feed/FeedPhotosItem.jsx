@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 import './style.css';
-const FeedPhotosItem = ({ photo }) => {
+const FeedPhotosItem = ({ photo, setModalPhoto }) => {
+  function handleClick() {
+    setModalPhoto(photo);
+  }
   return (
-    <li className=' grid rounded overflow-hidden cursor-pointer even:col-start-2 even:col-end-4 even:row-span-2 max-sm:even:col-start-2 max-sm:even:col-end-2 max-sm:even:row-span-1'>
+    <li
+      onClick={handleClick}
+      className=' grid rounded overflow-hidden cursor-pointer even:col-start-2 even:col-end-4 even:row-span-2 max-sm:even:col-start-2 max-sm:even:col-end-2 max-sm:even:row-span-1'
+    >
       <img
         src={photo.src}
         alt={photo.title}
