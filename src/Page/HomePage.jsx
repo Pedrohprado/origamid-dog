@@ -1,8 +1,9 @@
+import Feed from '../Components/Feed/Feed';
 const HomePage = () => {
   return (
-    <div className=' pt-16 w-full'>
-      <h1>Home page test</h1>
-    </div>
+    <section className=' w-5/6 flex flex-col items-center justify-center pt-20'>
+      <Feed />
+    </section>
   );
 };
 
