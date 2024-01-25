@@ -21,7 +21,7 @@ const FeedModal = ({ photo, setModalPhoto }) => {
   return (
     <div
       onClick={handleOut}
-      className=' fixed w-screen h-screen z-10 top-0 left-0 bg-black/40 flex py-8 px-16 max-sm:p-8 max-sm:overflow-y-auto '
+      className=' w-[100%] h-[100%] fixed z-10 top-0 left-0 bg-black/40 flex items-center justify-center max-sm:overflow-y-auto '
     >
       {error && <Error error={error} />}
       {loading && <Loading />}
