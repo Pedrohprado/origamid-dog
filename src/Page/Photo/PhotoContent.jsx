@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 import PhotoComments from './PhotoComments';
 import Eyes from '../../Assets/visualizacao-black.svg/?react';
+import React from 'react';
+import { UserContext } from '../../Context/userContext';
+import PhotoDelete from './PhotoDelete';
+import Image from '../../Components/Helper/Image';
 
 /* eslint-disable react/prop-types */
 const PhotoContent = ({ data }) => {
   const { photo, comments } = data;
+  const user = React.useContext(UserContext);
 
   return (
     <div
@@ -12,12 +17,16 @@ const PhotoContent = ({ data }) => {
       style={{ gridTemplateRows: 'auto 1fr auto' }}
     >
       <div className='w-[100%] rounded overflow-hidden'>
-        <img src={photo.src} alt={photo.title} />
+        <Image src={photo.src} alt={photo.title} />
       </div>
       <div className=' flex flex-col items-center justify-between w-[50%] px-8 py-8 max-sm:px-2 max-sm:py-2 max-sm:w-[100%] max-sm:h-[55%]'>
         <div className=' w-full'>
           <p className=' w-full flex items-center justify-between opacity-60 mb-4'>
-            <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+            {user.data && user.data.username === photo.author ? (
+              <PhotoDelete id={photo.id} />
+            ) : (
+              <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+            )}
             <span className='flex gap-1 items-center justify-center'>
               <Eyes />
               {photo.acessos}
