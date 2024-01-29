@@ -24,7 +24,7 @@ const Loading = () => {
   }
 
   return (
-    <div className=' w-screen h-screen absolute z-30 top-0 left-0 bg-black/30 flex items-center justify-center'>
+    <div className=' w-full h-full absolute z-30 top-0 left-0 bg-black/30 flex items-center justify-center'>
       <div className=' w-20 h-20 rounded-full flex items-center justify-center bg-white/50'>
         <svg
           width='46'
