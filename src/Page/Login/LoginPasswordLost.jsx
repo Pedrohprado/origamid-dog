@@ -20,7 +20,7 @@ const LoginPasswordLost = () => {
     }
   }
   return (
-    <section>
+    <section className=' opacity-0 translate-x-20 animate-animationleft'>
       <h1 className=' text-2xl mb-2'>Perdeu a senha?</h1>
       {data ? (
         <div>{data}</div>

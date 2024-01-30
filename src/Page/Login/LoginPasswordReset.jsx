@@ -39,7 +39,7 @@ const LoginPasswordReset = () => {
   }
 
   return (
-    <div>
+    <section className=' opacity-0 translate-x-20 animate-animationleft'>
       <h1 className=' text-2xl'>Resetar senha</h1>
       <form onSubmit={handleSubmit}>
         <Input label='Insira a nova senha' type='password' {...newpassword} />
@@ -50,7 +50,7 @@ const LoginPasswordReset = () => {
         )}
       </form>
       <Error error={error} />
-    </div>
+    </section>
   );
 };
 
