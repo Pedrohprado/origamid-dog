@@ -1,5 +1,5 @@
 import Feed from '../Components/Feed/Feed';
-import Head from '../Components/Helper/head';
+import Head from '../Components/Helper/Head';
 const HomePage = () => {
   return (
     <section className=' w-5/6 flex flex-col items-center justify-center pt-20'>
