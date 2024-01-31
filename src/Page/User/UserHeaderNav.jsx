@@ -2,6 +2,11 @@ import React from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/userContext';
 
+import Perfil from '../../Assets/feed.svg?react';
+import Estatic from '../../Assets/estatisticas.svg?react';
+import Add from '../../Assets/adicionar.svg?react';
+import Exit from '../../Assets/sair.svg?react';
+
 import './UserActiveLink.css';
 import useMedia from '../../Hooks/useMedia';
 
@@ -67,7 +72,7 @@ const UserHeaderNav = () => {
               }
               end
             >
-              <img src='src\Assets\feed.svg' alt='botão meu feed' />
+              <Perfil />
 
               {mobile && 'Minhas fotos'}
             </NavLink>
@@ -79,11 +84,7 @@ const UserHeaderNav = () => {
                   : 'flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
               }
             >
-              <img
-                src='src\Assets\estatisticas.svg'
-                alt='botão de estatisticas'
-              />
-
+              <Estatic />
               {mobile && 'Estatísticas'}
             </NavLink>
             <NavLink
@@ -94,10 +95,7 @@ const UserHeaderNav = () => {
                   : 'flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
               }
             >
-              <img
-                src='src\Assets\adicionar.svg'
-                alt='botão de adicionar foto'
-              />
+              <Add />
 
               {mobile && 'Adicionar fotos'}
             </NavLink>
@@ -109,7 +107,7 @@ const UserHeaderNav = () => {
                   : 'flex items-center justify-center gap-1 bg-slate-200 rounded p-1  hover:bg-white '
               }
             >
-              <img src='src\Assets\sair.svg' alt='botão de sair' />
+              <Exit />
               {mobile && 'sair'}
             </button>
           </>

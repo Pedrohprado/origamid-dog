@@ -5,6 +5,8 @@ import { UserContext } from '../../Context/userContext';
 import PhotoDelete from './PhotoDelete';
 import Image from '../../Components/Helper/Image';
 
+import Eyes from '../../Assets/visualizacao-black.svg?react';
+
 /* eslint-disable react/prop-types */
 const PhotoContent = ({ data }) => {
   const { photo, comments } = data;
@@ -27,7 +29,7 @@ const PhotoContent = ({ data }) => {
               <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
             )}
             <span className='flex gap-1 items-center justify-center'>
-              <img src='src\Assets\visualizacao-black.svg' alt='olhos' />
+              <Eyes />
               {photo.acessos}
             </span>
           </p>

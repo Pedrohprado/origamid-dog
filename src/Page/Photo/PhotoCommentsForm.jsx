@@ -2,6 +2,8 @@
 import React from 'react';
 import useFetch from '../../Hooks/useFetch';
 
+import DogSend from '../../Assets/enviar.svg?react';
+
 import { COMMENT_POST } from '../../api';
 import Error from '../../Components/Helper/Error';
 
@@ -34,7 +36,7 @@ const PhotoCommentsForm = ({ id, setComments }) => {
         onChange={({ target }) => setComment(target.value)}
       />
       <button className=' py-1 px-2'>
-        <img src='src\Assets\enviar.svg' alt='cachorro latindo' />
+        <DogSend />
       </button>
       <Error error={error} />
     </form>

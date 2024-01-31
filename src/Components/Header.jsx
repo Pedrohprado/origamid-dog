@@ -1,5 +1,6 @@
 import React from 'react';
 import LogoMarca from '../Assets/dogs.svg?react';
+import User from '../Assets/usuario.svg?react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Context/userContext';
 
@@ -15,7 +16,7 @@ const Header = () => {
         {data !== null ? (
           <button className=' px-5 py-2 text-stone-800 font-medium transition-1 flex items-center justify-center gap-2'>
             {data.nome}
-            <img src='../Assets/usuario.svg' alt='usuario' />
+            <User />
           </button>
         ) : (
           <Link
@@ -23,7 +24,7 @@ const Header = () => {
             className=' px-5 py-2 text-stone-800 font-medium transition-1 flex items-center justify-center gap-2'
           >
             Login | Criar
-            <img src='src\Assets\usuario.svg' alt='usuario' />
+            <User />
           </Link>
         )}
       </nav>
