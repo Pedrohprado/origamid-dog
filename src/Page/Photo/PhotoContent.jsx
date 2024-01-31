@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import PhotoComments from './PhotoComments';
-import Eyes from '../../Assets/visualizacao-black.svg/?react';
 import React from 'react';
 import { UserContext } from '../../Context/userContext';
 import PhotoDelete from './PhotoDelete';
@@ -28,7 +27,7 @@ const PhotoContent = ({ data }) => {
               <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
             )}
             <span className='flex gap-1 items-center justify-center'>
-              <Eyes />
+              <img src='src\Assets\visualizacao-black.svg' alt='olhos' />
               {photo.acessos}
             </span>
           </p>
