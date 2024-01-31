@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Send from '../../Assets/enviar.svg/?react';
 import useFetch from '../../Hooks/useFetch';
 
 import { COMMENT_POST } from '../../api';
@@ -35,7 +34,7 @@ const PhotoCommentsForm = ({ id, setComments }) => {
         onChange={({ target }) => setComment(target.value)}
       />
       <button className=' py-1 px-2'>
-        <Send />
+        <img src='src\Assets\enviar.svg' alt='cachorro latindo' />
       </button>
       <Error error={error} />
     </form>
