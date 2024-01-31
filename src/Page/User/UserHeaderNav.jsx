@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/userContext';
 
-import './UserActiveLInk.css';
+import './UserActiveLink.css';
 import useMedia from '../../Hooks/useMedia';
 
 import { HiOutlineMenu } from 'react-icons/hi';
